@@ -1,0 +1,153 @@
+<div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+          <div class="text-muted margen pull-left" style="margin-top: 20px">Secciones</div> 
+          <button  data-toggle="tooltip" title="Agregar seccion"  style="margin-top: 10px"  type="button" class="btn 
+                btn-default pull-right margen " id="add" >
+                      <span class="glyphicon glyphicon-plus"></span>
+                      
+          </button>
+         <div class="clearfix"></div> 
+    </div> 
+    
+   
+     
+   
+     <div class="clearfix"></div>
+     <div id="pneShow" >
+         
+     </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info" style="display: none"  id="alert"></div>   
+                <div id="pneInfCam" > 
+                   <input type="text" class="form-control" id="nom" placeholder="Nombre" />
+                   <input type="number" class="form-control" id="ord" placeholder="Orden" />
+                   <select id="sel"  class="form-control">
+                        
+                   </select>
+                   <button id="enviar" class="btn btn-primary pull-right btnAjax" >Enviar</button>
+                  <div class="clearfix"></div>
+               </div>
+               
+       </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+</div>
+
+<script>
+   
+   var sec = {
+       lst : [],
+       sel : {},
+       btn : "",
+       Cargar : function(){
+            $.get(server+"/secciones/listado", function(res){
+            if(res!=""){
+               res = $.parseJSON(res);
+               $("#pneShow").empty();
+               $.each(res,function(i, obj){
+                    sec.lst[obj.ID] = obj;
+                    sec.Add(obj);
+                 });
+             }
+
+           });
+        },
+       
+        Add: function(obj){
+            var btn = sec.btn.replace("@Nombre", obj.Nombre)
+                .replace(/color_mod/gi, "rgb("+obj.RGB+")")
+                .replace(/@id/gi, obj.ID)
+                .replace(/@orden/gi, obj.Orden);
+             $("#pneShow").append(btn); 
+          },
+          
+        editar: function(id){
+          sec.sel = sec.lst[id];
+          sec.cargarFrm();
+          $("#titulo").text("Editar un seccion");
+          $("#pneInfCam").show();
+          $("#addModal").modal("show"); 
+        },
+        
+        borrar: function(id){
+          sec.sel = sec.lst[id];
+          $.post(server+"/secciones/rm", sec.sel, function(res){
+              sec.Cargar();
+          }); 
+        },
+        
+        vaciarFrm : function(){
+            $("#nom").val("");
+            $("#sel").val("-1");
+            $("#ord").val("0");
+            $("#alert").hide();
+            $("#pneInfCam").hide();
+           },
+           
+        cargarFrm : function(){
+            $("#nom").val(sec.sel.Nombre);
+            $("#sel").val("-1");
+            $("#ord").val(sec.sel.Orden);
+            $("#alert").hide();
+            $("#pneInfCam").hide();
+        },
+        
+          
+   }
+   
+   
+    
+    
+   $(function(){
+        
+        $.post(server+"/site/colores",function(res){
+           var fam = $.parseJSON(res);
+           $("#sel").empty();
+           $("#sel").append($("<option>").attr("value",-1).text("No modificar"));
+           $.each(fam, function(i, f){
+              $("#sel").append($("<option>").attr("value",f.ID).text(f.Color)) ;
+           });
+        });
+       
+        $.get("/gestion/layout/boton_seccion.html?v=0.2", function(res){
+          sec.btn = res;        
+        });
+         
+        $("#enviar").bind("click", function(){
+            sec.sel.Nombre = $("#nom").val();
+            sec.sel.IDColor = $("#sel").val();
+            sec.sel.Orden = $("#ord").val();
+            var url = server+"/secciones/add";
+            $.post(url, sec.sel, function(res){
+               if(res != ""){
+                 sec.Cargar();
+                 $("#addModal").modal("hide");
+                } 
+            });
+          
+        });
+       
+        
+       $("#add").bind("click", function(){
+          sec.sel = {ID:-1};
+          sec.vaciarFrm();
+          $("#titulo").text("Agregar una seccion");
+          $("#pneInfCam").show();
+          $("#addModal").modal("show"); 
+       });
+       
+    });
+</script>

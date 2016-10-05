@@ -1,0 +1,205 @@
+   <div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+          <div class="text-muted margen pull-left" style="margin-top: 20px">Arqueos</div> 
+    <div class="clearfix"></div> 
+   </div> 
+    <div style="margin: 15px auto; max-width: 90%;" id="login" class="panel panel-default">
+        <div class="panel-heading"><strong>Valores de busqueda</strong></div>
+        <div class="panel-body">
+             <form id="form" class="form-horizontal form-normal" role="form">
+                   <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-xm-6">  
+                          <input class="span2 form-control" id="fdesde"  placeholder="Desde fecha" readonly="" type="text">
+                          <input class="span2 form-control" id="hdesde"  type="time" value="00:01">
+                        </div> 
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-xm-6">  
+                          <input class="span2 form-control" id="fhasta"  placeholder="hasta fecha" readonly="" type="text">
+                          <input class="span2 form-control" id="hhasta"  type="time" value="23:59">
+                        </div>  
+                    </div>
+                    <div class="panel-danger form-control" style="display: none" id="err">
+                        Error en los valores de busqueda, intente introducir los datos correctos... </div>
+                    <div class="form-group">
+                      <div class="pull-right">
+                          <button id="btnAceptar" type="button" class="btn btn-success btnAjax" onclick="Cargar()">Aceptar</button>
+                          <button id="btnAceptar" type="button" class="btn btn-success btnAjax" onclick="$('#pneArt').hide('slow');$('#tbArt').empty();">Limpiar</button>
+                       </div>
+                    </div>
+             </form>
+
+        </div>
+     </div>
+     
+      
+       <div id="pneArt" style="width: 90%; margin:  auto; margin-top: 30px;display: none">
+           <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <td>Fecha</td>
+                    <td>Hora</td>
+                    <td>Ticado</td>
+                    <td>Descuadre</td>
+                    <td>Caja real</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody id="tbArt">
+      
+             </tbody>
+    
+         </table>
+     </div>
+     
+       
+    <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info" style="display: none"  id="alert"></div>   
+                <div id="pneVer" > 
+                  <table class="table table-hover" >
+                        <tr>
+                         <th colspan="4">Información cierre</th>
+                        </tr> 
+                        <tbody id="tbInf">
+
+                        </tbody>
+
+                   </table> 
+                  <button id="enviar" class="btn btn-primary pull-right btnAjax" >Modificar</button>
+                  <div class="clearfix"></div>
+               </div>
+               <div id="pneModificar" > 
+                   <input type="text" class="form-control" id="nom" placeholder="Nombre">
+                   <input type="text" class="form-control" id="ap" placeholder="Apellidos">
+                   <input type="password" class="form-control" id="infP" placeholder="Contraseña">
+                   <input type="password" class="form-control" id="infR" placeholder="Repetir contraseña">
+                   <button id="enviar" class="btn btn-primary pull-right btnAjax" >Enviar</button>
+                  <div class="clearfix"></div>
+               </div>
+               
+         </div>
+      
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+        
+    <script src="/js/libs/datepicker/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="/js/libs/datepicker/css/datepicker.css">
+          
+    <script>
+      
+
+    
+     
+
+   var sec = null;    
+   var lstArt = [];
+   var artSel = {};
+   var fam = [];
+   
+  
+    function Cargar(){
+        var params = {};
+        var consultar = true;
+        params.fdesde = $("#fdesde").val();
+        params.fhasta = $("#fhasta").val();
+        params.hdesde = $("#hdesde").val();
+        params.hhasta = $("#hhasta").val();
+        if(params.fdesde==""){
+            consultar = false;
+            $("#fdesde").addClass("panel-danger") 
+        }else $("#fdesde").removeClass("panel-danger")
+         if(params.hdesde==""){
+             consultar = false;
+            $("#hdesde").addClass("panel-danger")
+        }else $("#hdesde").removeClass("panel-danger")
+        if(params.fhasta==""){
+            consultar = false;
+            $("#fhasta").addClass("panel-danger")
+        } else $("#fhasta").removeClass("panel-danger")
+         if(params.hhasta==""){
+             consultar = false;
+            $("#hhasta").addClass("panel-danger") 
+        }else $("#hhasta").removeClass("panel-danger")
+        
+        if(consultar){
+            $("#err").hide("slow");
+            $.post(server+"/ventas/ventasarq",params, function(res){
+               if(res!=""){
+                 res = $.parseJSON(res);
+                 $("#tbArt").empty();
+                 $("#pneArt").show("slow");
+                 $.each(res,function(i, l){
+                    AddLista(l); 
+                 });
+                 
+               } 
+            });
+        }else{
+            $("#err").show("slow");
+        }
+       
+    }
+   
+   
+    
+    function AddLista(obj){
+        var estado = "success";
+        var div = $("<tr>").addClass(estado)
+                    .append($("<td>").text(obj.Fecha)) 
+                    .append($("<td>").text(obj.Hora))  
+                    .append($("<td>").text(obj.Total)) 
+                    .append($("<td>").text(obj.Descuadre))
+                    .append($("<td>").text((parseFloat(obj.Total) + parseFloat(obj.Descuadre)).toFixed(2)))
+                    .append($("<button>").attr("type","button").text("Ver").bind("click",function(){
+                        rellenarCierre(obj);
+                        $("#pneModificar").hide();
+                        $("#pneVer").show();
+                        $("#addModal").modal("show");
+        }));
+                    
+        $("#tbArt").append(div); 
+       
+    }
+   
+   
+   
+   function rellenarCierre(obj){
+       $("#tbInf").empty();
+       var div = $("<tr>").addClass("info")
+                    .append($("<td>").text(obj.Fecha)) 
+                    .append($("<td>").text(obj.Hora))  
+                    .append($("<td>").text(obj.Total)) 
+                    .append($("<td>").text(obj.Descuadre))
+                    .append($("<td>").text((parseFloat(obj.Total) + parseFloat(obj.Descuadre)).toFixed(2)));
+           
+            
+       $("#tbInf").append(div)
+   }
+     
+   $(function(){
+        
+      
+       $('#fhasta').datepicker({
+            format: 'dd/mm/yyyy',
+            viewMode :'month'
+       });
+   
+       $('#fdesde').datepicker({
+            format: 'dd/mm/yyyy',
+            viewMode :'month',
+            
+        });
+
+       $("#fdesde").val(getFechaHoy()); 
+       $("#fhasta").val(getFechaHoy()); 
+       
+         
+    });
+</script>

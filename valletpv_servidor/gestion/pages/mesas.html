@@ -1,0 +1,177 @@
+<div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+          <div class="text-muted margen pull-left" style="margin-top: 20px">Mesas</div> 
+          <button  data-toggle="tooltip" title="Agregar zona"  style="margin-top: 10px;"  type="button" class="btn 
+                btn-default pull-right margen "  id="add" >
+                      <span class="glyphicon glyphicon-plus"></span>
+          </button>
+          <button  data-toggle="tooltip" title="Zonas" id="zonasBack" style="margin-top: 10px;display: none"  type="button" class="btn btn-primary pull-right margen "  onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'mesas',sub:'mesas'}));" >
+                      Zonas
+          </button>
+          <div class="clearfix"></div> 
+    </div> 
+     <div class="clearfix"></div>
+     
+     <div id="pneShow" >
+         
+     </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info" style="display: none"  id="alert"></div>   
+                <div id="pneInfCam" > 
+                   <input type="text" class="form-control" id="nom" placeholder="Nombre" />
+                      <input type="number" class="form-control" id="ord" placeholder="Orden" />
+                 
+                    <select id="sel"  class="form-control">
+                        
+                    </select>
+                   <button id="enviar" class="btn btn-primary pull-right btnAjax" >Enviar</button>
+                  <div class="clearfix"></div>
+               </div>
+               
+       </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+</div>
+
+<script>
+   
+   var mesas = {
+       zn : {},
+       lst : [],
+       sel : {},
+       btn : "",
+       Cargar : function(){
+            $.get(server+"/mesas/lszonas", function(res){
+              $("#zonasBack").hide(); 
+             if(res!=""){
+                 res = $.parseJSON(res);
+                 $("#pneShow").empty();
+                 $.each(res,function(i, obj){
+                    var div = $("<div>").addClass("col-lg-3 col-md-3 col-xs-6 col-sm-6 ");
+                      div.append($("<div>").addClass("margen")
+                       .attr("style","height:100px; width:100%;background-color: rgb("+obj.RGB+"); border: solid 1px;cursor:pointer").attr("data-nom", obj.Nombre).attr("data-id", obj.ID)
+                       .append("<div style='word-wrap:break-word;margin-top:15px '>"+obj.Nombre+"</div>"))
+                       .bind("click", function(){
+                          mesas.zn ={id: obj.ID};
+                          mesas.CargarMesas();
+                        });
+                   $("#pneShow").append(div); 
+               });
+             }
+
+           });
+        },
+        
+        CargarMesas : function(){
+            $.post(server+"/mesas/lsmesas", mesas.zn, function(res){
+            $("#zonasBack").show();    
+            if(res!=""){
+               res = $.parseJSON(res);
+               $("#pneShow").empty();
+               $.each(res,function(i, obj){
+                    mesas.lst[obj.ID] = obj;
+                    mesas.Add(obj);
+                 });
+             }
+
+           });
+        },
+       
+        Add: function(obj){
+            var btn = mesas.btn.replace("@Nombre", obj.Nombre)
+                .replace(/color_mod/gi, "rgb("+obj.RGB+")")
+                .replace(/@id/gi, obj.ID)
+                .replace(/@orden/gi, obj.Orden);
+             $("#pneShow").append(btn); 
+          },
+          
+        editar: function(id){
+          mesas.sel = mesas.lst[id];
+          mesas.cargarFrm();
+          $("#titulo").text("Editar un mesa");
+          $("#pneInfCam").show();
+          $("#addModal").modal("show"); 
+        },
+        
+        borrar: function(id){
+          mesas.sel = mesas.lst[id];
+          $.post(server+"/mesas/rm", mesas.sel, function(res){
+              mesas.CargarMesas();
+          }); 
+        },
+        
+        vaciarFrm : function(){
+            $("#nom").val("");
+            $("#sel").val("1");
+            $("#ord").val("0");
+            $("#alert").hide();
+            $("#pneInfCam").hide();
+           },
+           
+        cargarFrm : function(){
+            $("#nom").val(mesas.sel.Nombre);
+            $("#sel").val(mesas.sel.IDZona);
+            $("#ord").val(mesas.sel.Orden);
+            $("#alert").hide();
+            $("#pneInfCam").hide();
+        },
+        
+          
+   }
+   
+   
+    
+    
+   $(function(){
+        
+        $.post(server+"/mesas/lszonas",function(res){
+           var fam = $.parseJSON(res);
+           $("#sel").empty();
+           $("#sel").append($("<option>").attr("value",-1).text("No modificar"));
+           $.each(fam, function(i, f){
+              $("#sel").append($("<option>").attr("value",f.ID).text(f.Nombre)) ;
+           });
+        });
+       
+        $.get("/gestion/layout/boton_mesas.html?v=0.4", function(res){
+          mesas.btn = res;        
+        });
+         
+        $("#enviar").bind("click", function(){
+            mesas.sel.Nombre = $("#nom").val();
+            mesas.sel.IDZona = $("#sel").val();
+            mesas.sel.Orden =  $("#ord").val();
+            var url = server+"/mesas/add";
+            $.post(url, mesas.sel, function(res){
+               if(res != ""){
+                 mesas.CargarMesas();
+                 $("#addModal").modal("hide");
+                } 
+            });
+          
+        });
+       
+        
+       $("#add").bind("click", function(){
+          mesas.sel = {ID:-1,IDZona:mesas.zn.id};
+          mesas.vaciarFrm();
+          $("#titulo").text("Agregar una mesa");
+          $("#pneInfCam").show();
+          $("#addModal").modal("show"); 
+       });
+       
+    });
+</script>

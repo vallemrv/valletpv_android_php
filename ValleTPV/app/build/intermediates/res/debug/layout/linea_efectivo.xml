@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+       <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/Cantidad"
+        android:layout_weight="0.3"
+        android:textAlignment="textEnd"
+        android:gravity="end" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="X"
+        android:id="@+id/lblpor"
+        android:layout_weight="0.1"
+        android:gravity="end" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="4.00€"
+            android:id="@+id/Moneda"
+            android:layout_weight="0.3"
+            android:gravity="end" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/Total"
+            android:layout_weight="0.3"
+            android:gravity="end"
+            android:layout_marginRight="5dp" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnBorrar"
+        android:layout_weight="0.05"
+        android:layout_margin="5dp"
+        android:background="@drawable/borrarxml"
+        android:onClick="clickBorrarEfc"
+        />
+
+
+</LinearLayout><!-- From: file:/home/valle/ownCloud/proyectos/android/ValleTPV/app/src/main/res/layout/linea_efectivo.xml -->

@@ -1,0 +1,46 @@
+/* 
+    Created on : 30-nov-2013, 1:16:04
+    Author     : valle
+*/
+.datepicker {z-index: 1151 !important;}
+.endless_scroll_loader { z-index: 1151; position: fixed; top: 10%; right: 20px; }
+.imgAjax{
+  background-color: transparent;
+  opacity: 0.6;
+  width: 30px;
+  height: 30px;
+ }
+
+.btnAjax{
+  margin: 5px;  
+}
+
+.panel{
+   box-shadow: 10px 10px 5px #888888; 
+}
+
+.margen{
+    margin: 5px;
+}
+
+ .form-control{
+    margin: 5px;
+}
+
+.centrado{
+    text-align: center;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+li a{
+    cursor: pointer;
+}

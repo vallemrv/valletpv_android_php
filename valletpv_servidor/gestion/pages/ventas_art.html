@@ -1,0 +1,193 @@
+   <div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+          <div class="text-muted margen pull-left" style="margin-top: 20px">Ventas por articulo</div> 
+    <div class="clearfix"></div> 
+   </div> 
+    <div style="margin: 15px auto; max-width: 90%;" id="login" class="panel panel-default">
+        <div class="panel-heading"><strong>Valores de busqueda</strong></div>
+        <div class="panel-body">
+             <form id="form" class="form-horizontal form-normal" role="form">
+                    <input type="text" class="form-control" id="nom" placeholder="Nombre articulo">
+                    <select class="form-control" id="art" multiple style="display: none" >
+                    </select>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-xm-6">  
+                          <input class="span2 form-control" id="fdesde"  placeholder="Desde fecha" readonly="" type="text">
+                          <input class="span2 form-control" id="hdesde"  type="time" value="00:01">
+                        </div> 
+                        <div class="col-lg-6 col-sm-6 col-md-6 col-xm-6">  
+                          <input class="span2 form-control" id="fhasta"  placeholder="hasta fecha" readonly="" type="text">
+                          <input class="span2 form-control" id="hhasta"  type="time" value="23:59">
+                        </div>  
+                    </div>
+                    <div class="panel-danger form-control" style="display: none" id="err">
+                        Error en los valores de busqueda, intente introducir los datos correctos... </div>
+                    <div class="form-group">
+                      <div class="pull-right">
+                          <button id="btnAceptar" type="button" class="btn btn-success btnAjax" onclick="Cargar()">Aceptar</button>
+                          <button id="btnAceptar" type="button" class="btn btn-success btnAjax" onclick="$('#pneArt').hide('slow');$('#tbArt').empty();">Limpiar</button>
+                       </div>
+                    </div>
+             </form>
+
+        </div>
+     </div>
+     
+      
+       <div id="pneArt" style="width: 90%; margin:  auto; margin-top: 30px;display: none">
+           <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <td>Cantidad</td>
+                    <td>Descripcion</td>
+                    <td>Estado</td>
+                </tr>
+                </thead>
+                <tbody id="tbArt">
+      
+             </tbody>
+    
+         </table>
+     </div>
+     
+       
+    <script src="/js/libs/datepicker/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="/js/libs/datepicker/css/datepicker.css">
+          
+    <script>
+      
+
+    
+     
+
+   var sec = null;    
+   var lstArt = [];
+   var artSel = {};
+   var fam = [];
+   
+  
+    function Cargar(){
+        var params = {};
+        var consultar = true;
+        params.nombre = $("#nom").val();
+        params.art = $("#art").val();
+        params.fdesde = $("#fdesde").val();
+        params.fhasta = $("#fhasta").val();
+        params.hdesde = $("#hdesde").val();
+        params.hhasta = $("#hhasta").val();
+        if(params.nombre==""){
+            consultar = false;
+            $("#nom").addClass("panel-danger")
+        }else $("#nom").removeClass("panel-danger")
+        if(params.fdesde==""){
+            consultar = false;
+            $("#fdesde").addClass("panel-danger") 
+        }else $("#fdesde").removeClass("panel-danger")
+         if(params.hdesde==""){
+             consultar = false;
+            $("#hdesde").addClass("panel-danger")
+        }else $("#hdesde").removeClass("panel-danger")
+        if(params.fhasta==""){
+            consultar = false;
+            $("#fhasta").addClass("panel-danger")
+        } else $("#fhasta").removeClass("panel-danger")
+         if(params.hhasta==""){
+             consultar = false;
+            $("#hhasta").addClass("panel-danger") 
+        }else $("#hhasta").removeClass("panel-danger")
+        
+        if(consultar){
+            $("#err").hide("slow");
+            $.post(server+"/ventas/ventasart",params, function(res){
+               if(res!=""){
+                 res = $.parseJSON(res);
+                 $("#pneArt").show("slow");
+                 $.each(res,function(i, l){
+                    AddLista(l); 
+                 });
+                 $("#tbArt").append($("<tr>")
+                         .append($("<td colspan='3' style='font-size:120%'>").append(c+" articulos vendidos "+b+" articulos borrados "+p+" articulos pedidos. ")
+                         ));
+                 b=c=p=0;
+               } 
+            });
+        }else{
+            $("#err").show("slow");
+        }
+       
+    }
+   
+    var b = 0;
+    var c = 0;
+    var p = 0;
+    
+    function AddLista(obj){
+        var estado = "success";
+        var html = $("<div style='text-align: left;width:90%'>").append(obj.Nombre+"</br>");
+        switch(obj.Estado){
+            case "A":
+                b += parseInt(obj.Can);
+                estado = "danger";
+                $.each(obj.Motivo, function(i, m){
+                    html.append(m.Can+" no cobrados por "+m.Motivo+"</br>");
+                });
+                break;
+            case "P":    
+                p += parseInt(obj.Can);
+                estado = "warning";
+                break;
+            default:
+              c += parseInt(obj.Can);
+              estado = "success";
+              break;
+        }
+        
+        var div = $("<tr>").addClass(estado)
+                    .append($("<td>").text(obj.Can)) 
+                    .append($("<td>").append(html))  
+                    .append($("<td>").text(obj.Estado)) 
+            
+                    
+        $("#tbArt").append(div); 
+       
+    }
+   
+   
+   
+   
+     
+   $(function(){
+        
+      
+       $('#fhasta').datepicker({
+            format: 'dd/mm/yyyy',
+            viewMode :'month'
+       });
+   
+       $('#fdesde').datepicker({
+            format: 'dd/mm/yyyy',
+            viewMode :'month'
+       });
+       
+       var buscar = true;
+       $("#nom").keyup(function(){
+         if(buscar){  
+          str = $("#nom").val();
+          var params = {str:str};buscar=false;
+          $.post(server+'/articulos/listado',params, function(res){
+            $("#art").empty();buscar=true;
+            if(res!=""){
+                $("#art").show("hide");
+                res = $.parseJSON(res);
+                $.each(res, function(i, art){
+                   $("#art").append($("<option>").attr("value", art.ID).text(art.Nombre));
+                });
+             }else $("#art").hide("slow");
+          });
+        }
+         
+       }); 
+      
+         
+    });
+</script>

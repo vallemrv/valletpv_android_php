@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:padding="10dp">
+
+
+    <TextView
+        android:layout_width="900dp"
+        android:layout_height="70dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textSize="30dp"
+        android:textColor="#ffff000e"
+        android:gravity="center_vertical|center_horizontal" />
+</RelativeLayout><!-- From: file:/home/valle/ownCloud/proyectos/android/ValleTPV/app/src/main/res/layout/ticket_cobrado.xml -->

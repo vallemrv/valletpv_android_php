@@ -1,0 +1,309 @@
+<div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+        <div class="text-muted margen pull-left" style="margin-top: 20px">Editar articulos</div> 
+        <div class="pull-right" >
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">  
+                <input id="txtBus" type="text" style="display: none;max-width: 100px;margin-top: -1px" class="form-control  pull-left" placeholder="buscar"/>
+                <button  data-toggle="tooltip" title="Buscar articulos"  type="button" class="btn 
+                    btn-default " onclick="$('#txtBus').toggle('slow');" >
+                      <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button id="add" class="btn btn-primary btnAjax" style="display: none;margin-right: -8px">
+                   <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <button id="sec" class="btn btn-primary btnAjax" style="display: none;">
+                   <span class="glyphicon glyphicon-arrow-left"></span>
+                </button>
+            </div>
+         </form>   
+        </div>    
+        <div class="clearfix" style="margin-bottom: -10px" ></div>  
+    </div>   
+          
+    <div id="pneArt" >
+         
+    </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info fade"  id="result"></div>   
+             
+            
+                             
+                <div id="pneInfArt" > 
+                  <input type="text" class="form-control" id="nom" placeholder="Nombre de la tecla">
+                  <div class="form-inline">
+                    <input type="text" class="form-control col-xs-6" id="p1" placeholder="Precio 1">
+                    <input type="text" class="form-control col-xs-6" id="p2" placeholder="Precio 2">
+                    <input type="text" class="form-control col-xs-6" id="orden" placeholder="Orden">
+                    <input type="text" class="form-control col-xs-6" id="tag" placeholder="Abreviaturas para busqueda">
+                    <div class="text-left">
+                       <label for="fam"> Familia </label>
+                       <select id="fam"  class="form-control" >
+                       </select>
+                       <label> Seccion principal  </label>
+                       <select id="slPrin"  class="form-control">
+                       </select>
+                      <label> Seccion secundaria </label>
+                          <select id="slSec"  class="form-control">
+                       </select> 
+                    </div>   
+                   </div>  
+                  <button id="enviar" class="btn btn-primary pull-right btnAjax" >Enviar</button>
+                  <div class="clearfix"></div>
+               </div>
+                       
+               
+          
+       </div>
+             
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+      </div>
+         
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+</div>
+
+<script>
+   
+       
+   var sec = 0; 
+   var btnart = "";
+   var lstArt = [];
+   var artSel = {};
+   var fam = [];
+   var lssec = [];
+   var str = "";
+   
+   function CargarSecciones(){
+        $("#sec").hide();
+        $("#add").hide();
+        $("#txtBus").val("");
+        $('#txtBus').hide('slow');
+        str = "";
+        $.get(server+"/secciones/listado", function(res){
+        if(res!=""){
+           res = $.parseJSON(res);
+           $("#pneArt").empty();
+           $.each(res,function(i, sec){
+               var div = $("<div>").addClass("col-lg-2 col-md-2 col-xs-6 col-sm-6 ");
+               div.append($("<div>").addClass("margen")
+                       .attr("style","height:100px; width:100%;background: rgb("+sec.RGB+"); border: solid 1px;cursor:pointer").attr("data-nom", sec.Nombre).attr("data-id", sec.ID).attr("data-role","sec")
+                       .append("<div style='word-wrap:break-word;margin-top:15px '>"+sec.Nombre+"</div>"));
+               $("#pneArt").append(div); 
+             });
+             
+    
+            $("div[data-role='sec']").bind('click', function(){
+                    var objSec =  {id:$(this).attr("data-id"),nombre:$(this).attr("data-nom")};
+                    window.location.href = '#'+Base64.encode(JSON.stringify({op:'articulos',sub:'articulos',sec:objSec}));
+                  }); 
+           
+            }
+            
+        });
+    }
+   
+   function CargarArticulos(){
+        $("#sec").show();
+        $("#add").show();
+        var params = {sec:sec.id};
+        $.post(server+"/articulos/listado",params, function(res){
+         $("#pneArt").empty();
+          if(res!=""){
+           res = $.parseJSON(res);
+           $.each(res,function(i, art){
+              lstArt[art.ID] = art; 
+              AddArticulo(art); 
+              });
+          }
+      });
+   }
+   
+   
+   function AddArticulo(art){
+     var obj = btnart.replace("@Nombre", art.Nombre)
+             .replace("@P1", art.P1+" €")
+             .replace("@nom_fam", art.NomFamilia)
+             .replace("@Tag", art.Tag.replace(art.Nombre,""))
+             .replace(/@id/gi, art.ID)
+             .replace(/color_mod/gi, "rgb("+art.RGB+")");
+      $("#pneArt").append(obj); 
+   }
+   
+   function vaciarFrm(){
+     $("#nom").val("");
+     $("#p2").val("");
+     $("#p1").val("");
+     $("#orden").val("12");
+     $("#tag").val("");
+     $("#slSec").val("-1");
+     $("#slPrin").val(sec.id);
+     $("#fam").val("");
+    }
+   
+   function cargarFrm(art){
+     $("#nom").val(art.Nombre);
+     $("#p2").val(art.P2);
+     $("#p1").val(art.P1);
+     $("#orden").val(art.Orden);
+     $("#tag").val(art.Tag.replace(art.Nombre,""));
+     $("#slPrin").val(art.IDSeccion);
+     $("#slSec").val(art.IDSec2);
+     $("#fam").val(art.IDFamilia);
+   }
+   
+   function clonarFrm(art){
+     $("#nom").val("");
+     $("#p2").val(art.P2);
+     $("#p1").val(art.P1);
+     $("#orden").val(art.Orden);
+     $("#tag").val("");
+     $("#slPrin").val(art.IDSeccion);
+     $("#slSec").val(art.IDSec2);
+     $("#fam").val(art.IDFamilia);
+   }
+   
+   function editar(id){
+       artSel = lstArt[id];
+       artSel.ID = id;
+       sec.nombre = "";
+       sec.id = artSel.IDSeccion;
+       cargarFrm(artSel);
+       $("#titulo").text("Editar un articulo ");
+       $("#pneInfArt").show();
+       $("#addModal").modal("show");   
+   }
+   
+   
+   
+   function borrar(id){
+     var params = {id:id};
+     $.post(server+"/articulos/rm",params, function(res){
+        if(res=="success"){
+           $("div[data-id='"+id+"']").remove(); 
+        } 
+     });
+   }
+   
+   function clonar(id){
+       artSel = copy(lstArt[id]);
+       artSel.ID = -1;
+       clonarFrm(artSel);
+       $("#titulo").text("Clonar un articulo a la seccion "+sec.nombre);
+       $("#pneFoto").hide();
+       $("#pneInfArt").show();
+       $("#addModal").modal("show");   
+   }
+   
+  
+    
+   $(function(){
+        
+       
+        $.post(server+"/secciones/listado",function(res){
+           lssec = $.parseJSON(res);
+           $("#slSec").empty(); $("#slPrin").empty();
+           $("#slSec").append($("<option>").attr("value",-1).text("Solo la principal"));
+           $.each(lssec, function(i, f){
+              $("#slPrin").append($("<option>").attr("value",f.ID).text(f.Nombre)) ; 
+              $("#slSec").append($("<option>").attr("value",f.ID).text(f.Nombre)) ;
+           });
+       
+       });
+       
+        $.post(server+"/familias/listado",function(res){
+           fam = $.parseJSON(res);
+           $("#fam").empty();
+           $.each(fam, function(i, f){
+              $("#fam").append($("<option>").attr("value",f.ID).text(f.Nombre)) ;
+           });
+       });
+       
+       $.get("/gestion/layout/botonart.html?v=0.2", function(res){
+          btnart = res;        
+       });
+       
+         
+        
+       var buscar = true;
+       $("#txtBus").keyup(function(){
+          str = $("#txtBus").val();
+               $("#sec").show();
+               $("#add").hide();
+               
+              var params = {str:str};
+             $.post(server+'/articulos/listado',params, function(res){
+               $("#pneArt").empty();
+                 if(res!=""){
+                    res = $.parseJSON(res);
+                     $.each(res, function(i, art){
+                        lstArt[art.ID] = art; 
+                        AddArticulo(art);
+                     });
+                 }
+                 
+             });
+         
+       });
+       
+       $("#sec").bind("click", function(){
+           $("#addModal").modal("hide");
+           window.history.back();
+           CargarSecciones();
+       });
+       
+       $("#enviar").bind("click", function(){
+           artSel.Nombre = $("#nom").val();
+           artSel.P1 = $("#p1").val();
+           artSel.P2 = $("#p2").val();
+           artSel.sec2 = $("#slSec").val();
+           artSel.IDSeccion =  $("#slPrin").val();
+           artSel.IDFamilia = $("#fam").val();
+           
+           if(str!="") artSel.str = str;
+           else artSel.sec = sec.id;
+           
+           artSel.Orden = $("#orden").val();
+           artSel.Tag = $("#tag").val()+" "+artSel.Nombre;
+           
+           var url = server+"/articulos/edit";
+           if(artSel.ID==-1) url = server+"/articulos/add";
+           
+           $.post(url, artSel, function(res){
+              if(res != ""){
+                $("#addModal").modal("hide");
+                $("#pneArt").empty();
+                res = $.parseJSON(res);
+                $.each(res,function(i, art){
+                    lstArt[art.ID] = art; 
+                    AddArticulo(art); 
+                    });
+               } 
+           });
+       });
+       
+       $("#add").bind("click", function(){
+          artSel = {ID:-1};
+          vaciarFrm();
+          $("#titulo").text("Agregar un articulo a la seccion "+sec.nombre);
+          $("#pneFoto").hide();
+          $("#pneInfArt").show();
+          $("#addModal").modal("show"); 
+       });
+       
+         
+    });
+</script>

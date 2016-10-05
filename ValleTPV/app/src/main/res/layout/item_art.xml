@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="1"
+        android:id="@+id/lblCan"
+        android:textSize="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="0.1"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="Coca cola"
+        android:id="@+id/lblNombre"
+         android:textSize="16dp"
+        android:layout_toRightOf="@+id/lblCan"
+        android:layout_weight="0.5"
+        android:padding="10dp" />
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="Borrar"
+            android:id="@+id/btnBorrar"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/borrarxml"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.00 €"
+            android:id="@+id/lblTotal"
+            android:textSize="15dp"
+            android:layout_toStartOf="@+id/btnBorrar"
+            android:layout_toLeftOf="@+id/btnBorrar"
+            android:layout_alignBottom="@+id/btnBorrar"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.30 €"
+            android:id="@+id/lblPrecio"
+            android:textSize="12dp"
+            android:layout_toStartOf="@+id/btnBorrar"
+            android:layout_toLeftOf="@+id/btnBorrar"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+
+</LinearLayout>

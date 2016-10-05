@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/btnBorrar"
+            android:layout_toLeftOf="@+id/btnBorrar"
+            android:onClick="clickSugerencia"
+            android:id="@+id/linea_art"
+            android:layout_centerVertical="true"
+            android:layout_weight="0.9"
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cocacola"
+                android:id="@+id/lblDescripcion"
+                />
+        </RelativeLayout>
+
+
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnBorrar"
+            android:src="@android:drawable/ic_menu_delete"
+            android:onClick="OnBorrarLinea"
+            android:layout_weight="0.1" />
+
+
+</LinearLayout>

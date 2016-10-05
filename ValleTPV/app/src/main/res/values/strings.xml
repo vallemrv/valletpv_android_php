@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ValleTPV</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_preferencias_tpv">Preferencias TPV</string>
+    <string name="title_camareros">Elegir camareros</string>
+    <string name="title_activity_mesas">Mesas</string>
+    <string name="title_activity_cuenta">Cuenta</string>
+    <string name="title_activity_op_mesas">Operaciones con mesas</string>
+    <string name="title_activity_arqueo">Arqueo de caja</string>
+
+</resources>

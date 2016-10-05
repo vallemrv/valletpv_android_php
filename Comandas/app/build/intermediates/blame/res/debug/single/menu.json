@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/menu/mostrar_pedidos.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/menu/mostrar_pedidos.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/menu/sugerencias.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/menu/sugerencias.xml"
+    }
+]

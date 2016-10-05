@@ -1,0 +1,347 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.vallesoft.valletpv.Cuenta"
+    android:id="@+id/pnePrincipal">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:id="@+id/relativeLayout2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/txtTitulo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/AbrirCajon"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"
+            android:onClick="AbrirCajon"
+            android:background="@drawable/abrircajonxml"
+            android:layout_margin="5dp" />
+
+
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Cobrar"
+            android:id="@+id/Cobrar"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/AbrirCajon"
+            android:layout_toStartOf="@+id/AbrirCajon"
+            android:onClick="CobrarMesa"
+            android:background="@drawable/cobrarxml"
+            android:layout_margin="5dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:id="@+id/linearLayout2" />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:id="@+id/txtBuscar"
+            android:layout_toStartOf="@+id/btnVarios"
+            android:editable="true"
+            android:enabled="true"
+            android:hint="Buscar articulos"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btnVarios"
+            android:inputType="textFilter"
+            android:layout_alignBottom="@+id/btnVarios" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Varios"
+            android:id="@+id/btnVarios"
+            android:layout_toStartOf="@+id/separar"
+            android:layout_centerVertical="true"
+            android:onClick="MostrarVarios"
+            android:layout_toLeftOf="@+id/separar"
+            android:background="@drawable/variosxml"
+            android:layout_margin="5dp" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="New Button"
+            android:id="@+id/preimprimir"
+            android:layout_toStartOf="@+id/Cobrar"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/Cobrar"
+            android:onClick="PreImprimir"
+            android:background="@drawable/imprimirxml"
+            android:layout_margin="5dp" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/separar"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/preimprimir"
+            android:layout_toLeftOf="@+id/preimprimir"
+            android:onClick="MostrarSeparados"
+            android:background="@drawable/separarticketxml"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cantidad 1"
+            android:id="@+id/lblCantida"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:password="false"
+            android:phoneNumber="false"
+            android:singleLine="false"
+            android:shadowColor="@android:color/black"
+            android:textColor="@android:color/holo_red_dark" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relativeLayout2"
+        android:id="@+id/linearLayout">
+
+         <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="560dp"
+            android:layout_weight="0.3"
+            >
+
+            <LinearLayout
+                 android:orientation="vertical"
+                 android:layout_width="fill_parent"
+                 android:layout_height="250dp"
+                 android:layout_alignParentBottom="true"
+                 android:id="@+id/pneBotonera"
+                 android:gravity="bottom"
+                 android:baselineAligned="true"
+                 >
+
+                 <LinearLayout
+                     android:orientation="horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:layout_weight="1"
+                     android:id="@+id/linearLayout3">
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="1"
+                         android:id="@+id/button4"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"
+                         />
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="2"
+                         android:id="@+id/button5"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="3"
+                         android:id="@+id/button6"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:orientation="horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:layout_weight="1">
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="4"
+                         android:id="@+id/button"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp" />
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="5"
+                         android:id="@+id/button2"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="6"
+                         android:id="@+id/button3"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:orientation="horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:layout_weight="1"
+                     android:id="@+id/linearLayout4">
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="7"
+                         android:id="@+id/button7"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="8"
+                         android:id="@+id/button8"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+
+                     <Button
+                         android:layout_width="0dp"
+                         android:layout_height="fill_parent"
+                         android:text="9"
+                         android:id="@+id/button9"
+                         android:layout_weight="1"
+                         android:onClick="clickCantidad"
+                         android:background="@drawable/blancoxml"
+                         android:layout_margin="5dp"/>
+                 </LinearLayout>
+
+             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/pneDisplay"
+                android:background="#ff1f0100"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Total:"
+                    android:id="@+id/lblTotal"
+                    android:textColor="#ffff0011"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="35dp"
+                    android:textSize="25dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0.00 €"
+                    android:id="@+id/lblPrecio"
+                    android:textColor="#ffff0001"
+                    android:layout_alignTop="@+id/lblTotal"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="35dp"
+                    android:textSize="25dp"/>
+
+            </RelativeLayout>
+
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/lstCamareros"
+                android:background="#ffffeac3"
+                android:layout_below="@+id/pneDisplay"
+                android:layout_above="@+id/pneBotonera"
+                />
+
+        </RelativeLayout>
+
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollArt"
+            android:layout_weight="0.68" >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pneArt"
+                android:stretchColumns="*"></TableLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollSec"
+            android:layout_weight="0.12"
+           >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pneSecciones"></LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

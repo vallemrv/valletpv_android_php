@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/btnSalir"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/salirxml"
+        android:layout_margin="5dp" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/btnImprimir"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/btnSalir"
+        android:layout_toStartOf="@+id/btnSalir"
+        android:layout_margin="5dp"
+        android:background="@drawable/imprimirxml" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/btnListado"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/btnImprimir"
+        android:layout_toStartOf="@+id/btnImprimir"
+        android:layout_margin="5dp"
+        android:background="@drawable/listaticketxml" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btnSalir" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/pneListados"></LinearLayout>
+    </ScrollView>
+</RelativeLayout>

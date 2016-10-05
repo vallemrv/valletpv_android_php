@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/txtCantidad"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:hint="Cantidad de monedas" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/txtMoneda"
+            android:hint="Moneda"
+            android:layout_below="@+id/txtCantidad"
+            android:layout_alignRight="@+id/btnSalir"
+            android:layout_alignEnd="@+id/btnSalir" />
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/btnSalir"
+            android:layout_below="@+id/txtMoneda"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/salirxml"
+            android:layout_margin="5dp" />
+
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="OK"
+            android:id="@+id/btnAceptar"
+            android:layout_toStartOf="@+id/btnSalir"
+            android:layout_below="@+id/txtMoneda"
+            android:layout_toLeftOf="@+id/btnSalir"
+            android:background="@drawable/blancoxml"
+            android:layout_margin="5dp" />
+    </RelativeLayout>
+</LinearLayout><!-- From: file:/home/valle/ownCloud/proyectos/android/ValleTPV/app/src/main/res/layout/add_efectivo.xml -->

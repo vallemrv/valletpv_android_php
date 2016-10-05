@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="Mesa"
+        android:id="@+id/btnMesa"
+
+        />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/pneBtnMesa"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnBorrarMesa"
+            android:onClick="clickBorrarMesa"
+            android:background="@drawable/borrarxml"
+            android:layout_margin="5dp"
+            />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnCambiarMesa"
+            android:onClick="clickCambiarMesa"
+            android:background="@drawable/cambiarmesaxml"
+            android:layout_margin="5dp" />
+
+
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnCobrar"
+            android:onClick="clickCobrarMesa"
+            android:background="@drawable/cobrarxml"
+            android:layout_margin="5dp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout><!-- From: file:/home/valle/ownCloud/proyectos/android/ValleTPV/app/src/main/res/layout/boton_mesa.xml -->

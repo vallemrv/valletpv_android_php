@@ -1,0 +1,119 @@
+   <div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+          <div class="text-muted margen pull-left" style="margin-top: 20px">Mesas abiertas</div> 
+        
+          
+    <div class="clearfix"></div> 
+    </div> 
+     
+       
+       
+    <div id="pneArt" >
+         
+    </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px">
+                    <div ><h3 id="titulo"></h3></div>
+                </div>
+               <div id="mContent" style="text-align: center;"></div>
+          
+          </div>
+             
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+      </div>
+         
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+
+
+<script>
+   
+   var sec = null;    
+   var lstArt = [];
+   var artSel = {};
+   var fam = [];
+   
+  
+    function Cargar(){
+        var params = {};
+        $.post(server+"/historial/lsinfmesas",params, function(res){
+         $("#pneArt").empty();
+          if(res!=""){
+           res = $.parseJSON(res);
+           $.each(res,function(i, art){
+              lstArt[art.ID] = art; 
+              addBotonMesa(art); 
+              });
+          }
+      });
+   }
+   
+    
+    function AddBotonZona(obj){
+        var div = $("<li>").height(50)
+                       .addClass("margen")
+                       .attr("style","background: rgb("+obj.RGB+"); border: solid 1px;cursor:pointer")
+                       .attr("data-nom", obj.Nombre).attr("data-id", obj.ID).attr("data-role","sec")
+                       .append("<a style='word-wrap:break-word;margin-top:5px '>"+obj.Nombre+"</a>");
+               
+               $("#menu").append(div); 
+    }
+   
+   
+   
+   function addBotonMesa(art){
+       var obj = btnart.replace(/@Nombre/gi,art.NomMesa)
+              .replace("@nomcam",art.NomCam )
+              .replace("@fecha",art.Fecha )
+              .replace("@hora",art.Hora )
+              .replace("@total",art.Total)
+              .replace("@num",art.NumCopias)
+              .replace("color_mod","gray")
+              .replace(/uid_mod/gi, art.UID) 
+              .replace(/@id/gi, art.ID)
+       $("#pneArt").append(obj); 
+   }
+   
+   
+   function mostrar(uid, nom){
+       var params = {uid:uid}
+       $.post(server+"/historial/infmesa", params, function(res){
+          if(res!=""){
+              res = $.parseJSON(res);
+              $("#titulo").text("Informacion mesa "+nom);
+              $("#mContent").empty();
+              $.each(res, function(i, p){
+                  $("#mContent").append($("<div style='margin:20px'>").addClass("alert-info").text(p.Nombre+" - "+p.Hora));
+                   $.each(p.lp, function(i, lp){
+                       $("#mContent").append($("<div style='margin:5px 20% 5px;'>").addClass("alert-warning").addClass("text-left").text(lp.Can+" - "+lp.Nombre));
+                   });
+                   $.each(p.ln, function(i, ln){
+                       $("#mContent").append($("<div style='margin:5px 20% 5px'>").addClass("alert-danger").addClass("text-left").text(ln.Can+" - "+ln.Nombre +" - "+ln.Motivo+" - "+ln.NomCam));
+                   });
+                   $.each(p.lc, function(i, lc){
+                       $("#mContent").append($("<div style='margin:5px 20% 5px;'>").addClass("alert-success").addClass("text-left").text(lc.Can+" - "+lc.Nombre));
+                   });
+              });
+              $("#addModal").modal("show");
+          } 
+       });
+   }
+    
+   $(function(){
+        
+       $.get("/gestion/layout/boton_info_mesa.html", function(res){
+          btnart = res;        
+       });
+         
+    });
+</script>

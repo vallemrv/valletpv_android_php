@@ -1,0 +1,35 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText android:id="@+id/txtUrl"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:inputType="textUri"
+            android:hint="Url servidor"/>
+
+            <Button android:id="@+id/btnAceptar"
+            android:text="Ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrancar Receptor"
+        android:id="@+id/switch1"
+        android:checked="false" />
+
+
+</LinearLayout><!-- From: file:/home/valle/ownCloud/proyectos/android/Recepcion/app/src/main/res/layout/activity_preferencias.xml -->

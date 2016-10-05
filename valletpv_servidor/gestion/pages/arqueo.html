@@ -1,0 +1,300 @@
+<div class="centrado margen">
+    <div class="navbar navbar-default" role="navigation">
+         <div class="navbar-brand">Arqueo de caja</div> 
+           <button id="add" class="btn  pull-right btnAjax" style="display: none">Arquear caja</button>
+  
+         <div class="clearfix"></div> 
+    </div> 
+    <div class="row">
+        <div class="btn-group col-lg-4 col-md-4">
+            <button id="add" class="btn btn-primary pull-right btnAjax" style="display: none">Efectivo</button>
+            <button id="add" class="btn btn-primary pull-right btnAjax" style="display: none">Tarjeta</button>
+            <button id="sec" class="btn btn-primary pull-right btnAjax" style="display: none">Gastos</button>
+        </div>
+        <div class="btn-group col-lg-8 col-md-8">
+           <div id="pneArt" >
+             
+           </div>
+        </div>    
+    </div>
+   
+    <div id="pneArt" >
+         
+    </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info fade"  id="result"></div>   
+             
+                
+        
+          
+       </div>
+             
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+      </div>
+         
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+</div>
+
+<script>
+   
+       
+   var sec = 0; 
+   var btnart = "";
+   var lstArt = [];
+   var artSel = {};
+   var fam = [];
+   
+   function CargarSecciones(){
+        $("#sec").hide();
+        $("#add").hide();
+        $("#txtBus").val("");
+        $('#txtBus').hide('slow');
+        $.get(server+"/secciones/listado", function(res){
+        if(res!=""){
+           res = $.parseJSON(res);
+           $("#pneArt").empty();
+           $.each(res,function(i, sec){
+               var div = $("<div>").addClass("col-lg-2 col-md-2 col-xs-6 col-sm-6 ");
+               div.append($("<div>").addClass("margen")
+                       .attr("style","height:100px; width:100%;background: gray; border: solid 1px;cursor:pointer").attr("data-nom", sec.Nombre).attr("data-id", sec.ID).attr("data-role","sec")
+                       .append($("<div>").attr("style","width:50px; height:20px; margin:5px").css("background-color", sec.Color))
+                       .append("<div style='word-wrap:break-word;margin-top:15px '>"+sec.Nombre+"</div>"));
+               $("#pneArt").append(div); 
+             });
+             
+    
+            $("div[data-role='sec']").bind('click', function(){
+                    var objSec =  {id:$(this).attr("data-id"),nombre:$(this).attr("data-nom")};
+                    window.location.href = '#'+Base64.encode(JSON.stringify({op:"articulos",sec:objSec}));
+                  }); 
+           
+            }
+            
+        });
+    }
+   
+   function CargarArticulos(){
+        $("#sec").show();
+        $("#add").show();
+        var params = {sec:sec.id};
+        $.post(server+"/articulos/listado",params, function(res){
+         $("#pneArt").empty();
+          if(res!=""){
+           res = $.parseJSON(res);
+           $.each(res,function(i, art){
+              lstArt[art.ID] = art; 
+              AddArticulo(art); 
+              });
+          }
+      });
+   }
+   
+   
+   function AddArticulo(art){
+     var obj = btnart.replace("@Nombre", art.Nombre)
+             .replace("@P1", art.P1+" €")
+             .replace("@Descripcion", art.Descripcion)
+             .replace("@Tag", art.Tag.replace(art.Nombre,""))
+             .replace(/@id/gi, art.ID)
+             .replace("@url", server+'/articulos/img/id/'+art.ID);
+      $("#pneArt").append(obj); 
+   }
+   
+   function vaciarFrm(){
+     $("#nom").val("");
+     $("#p2").val("");
+     $("#p1").val("");
+     $("#des").val("");
+     $("#tag").val("");
+    }
+   
+   function cargarFrm(art){
+     $("#nom").val(art.Nombre);
+     $("#p2").val(art.P2);
+     $("#p1").val(art.P1);
+     $("#des").val(art.Descripcion);
+     $("#tag").val(art.Tag.replace(art.Nombre,""));
+     $("#fam").val(art.IDFamilia);
+   }
+   
+   function clonarFrm(art){
+     $("#nom").val("");
+     $("#p2").val(art.P2);
+     $("#p1").val(art.P1);
+     $("#des").val("");
+     $("#tag").val("");
+     $("#fam").val(art.IDFamilia);
+   }
+   
+   function editar(id){
+       artSel = lstArt[id];
+       artSel.ID = id;
+       sec.nombre = "";
+       sec.id = artSel.IDSeccion;
+       cargarFrm(artSel);
+       $("#titulo").text("Editar un articulo a la seccion "+sec.nombre);
+       $("#pneFoto").hide();
+       $("#pneInfArt").show();
+       $("#addModal").modal("show");   
+   }
+   
+   function subirFoto(id){
+       artSel = lstArt[id];
+       artSel.ID = id;
+       $("#titulo").text("Subir una foto");
+       $("#imgArt").attr("src",server+'/articulos/img/id/'+artSel.ID);
+       $("#pneFoto").show();
+       $("#pneInfArt").hide();
+       $("#addModal").modal("show");   
+   }
+   
+   function borrar(id){
+     var params = {id:id};
+     $.post(server+"/articulos/rm",params, function(res){
+        if(res=="success"){
+           $("div[data-id='"+id+"']").remove(); 
+        } 
+     });
+   }
+   
+   function clonar(id){
+       artSel = copy(lstArt[id]);
+       sec.nombre = "";
+       sec.id = artSel.IDSeccion;
+       artSel.ID = -1;
+       clonarFrm(artSel);
+       $("#titulo").text("Clonar un articulo a la seccion "+sec.nombre);
+       $("#pneFoto").hide();
+       $("#pneInfArt").show();
+       $("#addModal").modal("show");   
+   }
+   
+  
+    
+   $(function(){
+        
+       
+        $.post(server+"/familias/listado",function(res){
+           fam = $.parseJSON(res);
+           $.each(fam, function(i, f){
+              $("#fam").append($("<option>").attr("value",f.ID).text(f.Nombre)) ;
+           });
+       });
+       
+       $.get("/gestion/layout/botonart.html", function(res){
+          btnart = res;        
+       });
+       
+         
+        
+       var buscar = true;
+       $("#txtBus").keyup(function(){
+          var str = $("#txtBus").val();
+               $("#sec").show();
+               $("#add").hide();
+               
+              var params = {str:str};
+             $.post(server+'/articulos/listado',params, function(res){
+               $("#pneArt").empty();
+                 if(res!=""){
+                    res = $.parseJSON(res);
+                     $.each(res, function(i, art){
+                        AddArticulo(art);
+                     });
+                 }
+                 
+             });
+         
+       });
+       
+       $("#sec").bind("click", function(){
+           $("#addModal").modal("hide");
+           window.history.back();
+           CargarSecciones();
+       });
+       
+       $("#enviar").bind("click", function(){
+           artSel.Nombre = $("#nom").val();
+           artSel.P1 = $("#p1").val();
+           artSel.P2 = $("#p2").val();
+           artSel.Descripcion = $("#des").val();
+           artSel.Tag = $("#tag").val()+' '+ $("#nom").val();
+           artSel.IDFamilia = $("#fam").val();
+           artSel.IDSeccion = sec.id;
+           var url = server+"/articulos/edit";
+           if(artSel.ID==-1) url = server+"/articulos/add"
+           $.post(url, artSel, function(res){
+              if(res != ""){
+                artSel.ID = res;
+                lstArt[artSel.ID] = artSel;
+                $("div[data-id='"+artSel.ID+"']").remove();
+                AddArticulo(artSel) ;
+                clonar(artSel.ID);
+               } 
+           });
+       });
+       
+       $("#add").bind("click", function(){
+          artSel = {ID:-1};
+          vaciarFrm();
+          $("#titulo").text("Agregar un articulo a la seccion "+sec.nombre);
+          $("#pneFoto").hide();
+          $("#pneInfArt").show();
+          $("#addModal").modal("show"); 
+       });
+       
+     
+       
+      $('#fileupload').fileupload({
+        dataType:'json',
+        url: server+"/gesficheros/",
+        method:"POST",
+        enctype:"multipart/form-data",
+        send :function (){
+           $('#progressbar').removeClass('fade');
+           $("#imgArt").attr("src","/images/loader.gif");
+           $("img[data-id='"+artSel.ID+"']").attr("src","/images/loader.gif");
+        },
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                var params  = {nomF:file.name,id:artSel.ID}
+                $.post(server+'/articulos/chFoto', params, function(res){
+                   if(res!=''){
+                      $("#imgArt").attr("src",server+'/articulos/img/id/'+artSel.ID+"/"+Math.random());
+                      $("img[data-id='"+artSel.ID+"']").attr("src",server+'/articulos/img/id/'+artSel.ID+"/"+Math.random());
+                      $('#progressbar').addClass('fade');
+                      $('#bar').css('width','0%');
+                    }
+                });
+            });
+            
+        },
+
+        progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#bar').css(
+            'width',
+            progress + '%'
+        );
+       }
+      });
+      
+       
+       
+        
+    });
+</script>

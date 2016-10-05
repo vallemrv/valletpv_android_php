@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="560dp"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="570dp"
+        android:layout_height="106dp">
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:text="Invitacion"
+        android:id="@+id/btnInv"
+        android:background="@drawable/blancoxml"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:text="Simpa"
+        android:id="@+id/btnSimpa"
+        android:background="@drawable/blancoxml"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:text="Error\npedido"
+        android:id="@+id/btnError"
+        android:singleLine="false"
+        android:background="@drawable/blancoxml"
+        android:layout_margin="5dp"/>
+
+    <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/btnEdit"
+            android:background="@drawable/editarxml"
+            android:layout_margin="5dp"/>
+
+    <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/btnSalir"
+            android:background="@drawable/salirxml"
+            android:layout_margin="5dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="550dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/pneEditarMotivo">
+
+        <EditText
+            android:layout_width="450dp"
+            android:layout_height="100dp"
+            android:id="@+id/txtMotivo"
+            android:layout_gravity="bottom"
+            android:hint="Editar motivo" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Ok"
+            android:id="@+id/btnOk"
+            android:layout_gravity="right"
+            android:background="@drawable/blancoxml"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/home/valle/ownCloud/proyectos/android/ValleTPV/app/src/main/res/layout/borrar_art.xml -->

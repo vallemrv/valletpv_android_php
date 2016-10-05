@@ -1,0 +1,150 @@
+<div class="centrado margen">
+    <div class="page-header" style="margin-top: -20px" role="navigation">
+          <div class="text-muted margen pull-left" style="margin-top: 20px">Camareros</div> 
+          <button  data-toggle="tooltip" title="Agregar camareros"  style="margin-top: 10px"  type="button" class="btn 
+                btn-default pull-right margen " id="add" >
+                      <span class="glyphicon glyphicon-plus"></span>
+                      
+          </button>
+         <div class="clearfix"></div> 
+    </div> 
+    
+   
+     
+   
+     <div class="clearfix"></div>
+     <div id="pneCam" >
+         
+     </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info" style="display: none"  id="alert"></div>   
+                <div id="pneInfCam" > 
+                   <input type="text" class="form-control" id="nom" placeholder="Nombre">
+                   <input type="text" class="form-control" id="ap" placeholder="Apellidos">
+                   <input type="password" class="form-control" id="infP" placeholder="Contraseña">
+                   <input type="password" class="form-control" id="infR" placeholder="Repetir contraseña">
+                   <button id="enviar" class="btn btn-primary pull-right btnAjax" >Enviar</button>
+                  <div class="clearfix"></div>
+               </div>
+               
+       </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+</div>
+
+<script>
+   
+   var camareros = {
+       lstCam : [],
+       camSel : {},
+       btnCam : "",
+       CargarCamareros : function(){
+            $.get(server+"/camareros/todos", function(res){
+            if(res!=""){
+               res = $.parseJSON(res);
+               $("#pneCam").empty();
+               $.each(res,function(i, cam){
+                    camareros.lstCam[cam.ID] = cam;
+                    camareros.AddCamarero(cam);
+                 });
+             }
+
+           });
+       },
+       
+        AddCamarero: function(cam){
+            var ap = cam.Apellidos.split(" ");
+            var apl = ap.length > 1 ? ap[0]: cam.Apellidos;
+            cam.NomTicket = cam.Nombre+" "+apl;
+            var obj = camareros.btnCam.replace("@Nombre", cam.NomTicket)
+                .replace(/@id/gi, cam.ID)
+                .replace(/chekd_mod/gi, cam.Activo==1 ? "checked" : "")
+                .replace(/activo_mod/gi, cam.Activo==1 ? true : false);
+             $("#pneCam").append(obj); 
+          },
+          
+        vaciarFrm : function(){
+            $("#nom").val("");
+            $("#ap").val("");
+            $("#infP").val("");
+            $("#infR").val("");
+            $("#alert").hide();
+            $("#pneInfCam").hide();
+           },
+           
+        cargarFrm : function(){
+            $("#nom").val(camareros.camSel.Nombre);
+            $("#ap").val(camareros.camSel.Apellidos);
+            $("#infP").val(camareros.camSel.Pass);
+            $("#infR").val(camareros.camSel.Pass);
+            $("#alert").hide();
+            $("#pneInfCam").hide();
+        },
+        
+        editar: function(id){
+          camareros.camSel = camareros.lstCam[id];
+          camareros.cargarFrm();
+          $("#titulo").text("Editar un camarero");
+          $("#pneInfCam").show();
+          $("#addModal").modal("show"); 
+        },
+        
+        activar: function(id, activo){
+          camareros.camSel = camareros.lstCam[id];
+          camareros.camSel.Activo = !activo;
+          $.post(server+"/camareros/activar", camareros.camSel);
+        }
+        
+          
+   }
+   
+   
+    
+    
+   $(function(){
+       
+        $.get("/gestion/layout/boton_cam.html?v=0.2", function(res){
+          camareros.btnCam = res;        
+        })
+         
+        $("#enviar").bind("click", function(){
+           var pass = $("#infP").val();
+           var rpass = $("#infR").val();
+           if(pass==rpass){
+            camareros.camSel.Nombre = $("#nom").val();
+            camareros.camSel.Apellidos = $("#ap").val();
+            camareros.camSel.Pass = Base64.encode(pass);
+            var url = server+"/camareros/add";
+            $.post(url, camareros.camSel, function(res){
+               if(res != ""){
+                 camareros.CargarCamareros();
+                 $("#addModal").modal("hide");
+                } 
+            });
+          }else $("#alert").html("Contraseñas no coinciden").show("show");
+        });
+       
+        
+       $("#add").bind("click", function(){
+          camareros.camSel = {ID:-1};
+          camareros.vaciarFrm();
+          $("#titulo").text("Agregar un camarero");
+          $("#pneInfCam").show();
+          $("#addModal").modal("show"); 
+       });
+       
+    });
+</script>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="1"
+        android:id="@+id/lblNumTicket"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="12/12/12 - 00:22"
+        android:id="@+id/lblHoraFecha"
+        android:layout_marginLeft="50dp"
+       android:layout_centerVertical="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Mesa 1"
+        android:id="@+id/lblNombre"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_alignBaseline="@+id/lblHoraFecha"
+        android:layout_toRightOf="@+id/lblHoraFecha" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0.00€"
+        android:id="@+id/lblTotal"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0.00€"
+        android:id="@+id/lblEntrega"
+        android:layout_marginRight="70dp"
+        android:layout_alignTop="@+id/lblTotal"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/lblTotal" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnVerTicket"
+        android:layout_alignTop="@+id/lblTotal"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@android:drawable/ic_menu_search"
+        android:onClick="clickVerTicket"
+        android:background="@drawable/blancoxml" />
+
+
+</RelativeLayout>

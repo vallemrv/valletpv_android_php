@@ -1,0 +1,173 @@
+<div class="centrado margen">
+     <div class="page-header" style="margin-top: -20px" role="navigation">
+        <div class="text-muted margen pull-left" style="margin-top: 20px">Agregar teclas al comandero</div> 
+        <div class="pull-right" >
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">  
+                <input id="txtBus" type="text" style="display: none;max-width: 100px" class="form-control " placeholder="buscar "/>
+                <button  data-toggle="tooltip" title="Buscar articulos"  type="button" class="btn 
+                  btn-default " onclick="$('#txtBus').toggle('slow');" >
+                      <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button id="sec" class="btn btn-primary btnAjax" style="display: none;margin-top: 10px">
+                 <span class="glyphicon glyphicon-arrow-left"></span>
+               </button>
+             </div>
+           </form>   
+        </div>            
+        <div class="clearfix" ></div>  
+    </div>  
+    
+    <div id="pneArt" >
+         
+    </div>
+     
+   
+</div>
+
+<script>
+   
+       
+   var sec = 0; 
+   var btnart = "";
+   var sel = "";
+   var lstArt = [];
+   var artSel = {};
+   var fam = [];
+   
+   function CargarSecciones(){
+        $("#sec").hide();
+        $("#add").hide();
+        $("#txtBus").val("");
+        $('#txtBus').hide('slow');
+        $.get(server+"/secciones/listado", function(res){
+        if(res!=""){
+           res = $.parseJSON(res);
+           $("#pneArt").empty();
+           $.each(res,function(i, sec){
+               var div = $("<div>").addClass("col-lg2 col-md-2 col-xs-6 col-sm-6 ");
+               div.append($("<div>").addClass("margen")
+                       .attr("style","height:100px; width:100%;background: rgb("+sec.RGB+"); border: solid 1px;cursor:pointer").attr("data-nom", sec.Nombre).attr("data-id", sec.ID).attr("data-role","sec")
+                       .append("<div style='word-wrap:break-word;margin-top:15px '>"+sec.Nombre+"</div>"));
+               $("#pneArt").append(div); 
+             });
+             
+    
+            $("div[data-role='sec']").bind('click', function(){
+                    var objSec =  {id:$(this).attr("data-id"),nombre:$(this).attr("data-nom")};
+                    window.location.href = '#'+Base64.encode(JSON.stringify({op:"comandas", sub: "articulos", sec:objSec}));
+                  }); 
+           
+            }
+            
+        });
+    }
+   
+   function CargarArticulos(){
+        $("#sec").show();
+        $("#add").show();
+        var params = {sec:sec.id};
+        $.post(server+"/comandas/lsNoIncluidos",params, function(res){
+         $("#pneArt").empty();
+          if(res!=""){
+           res = $.parseJSON(res);
+           $.each(res,function(i, art){
+              lstArt[art.ID] = art; 
+              AddArticulo(art); 
+              });
+          }
+      });
+   }
+   
+   
+   function AddArticulo(art){
+       
+     var obj = btnart.replace("@Nombre", art.Nombre)
+             .replace(/@id/gi, art.ID)
+             .replace(/mod_id/gi,"sel"+art.ID)
+             .replace(/btn_id/gi,"btn"+art.ID)
+             .replace(/ord_id/gi,"ord"+art.ID)
+             .replace(/ord_val/gi,art.Orden)
+             .replace(/ver_mas/gi,"none")
+             .replace(/color_mod/gi,"rgb("+art.RGB+")");
+           $("#pneArt").append(obj);
+           
+           fam = $.parseJSON(sel);
+           
+           $("#sel"+art.ID).empty();
+           $("#sel"+art.ID).append($("<option>").attr("value",-1).text("No incluido"));
+           
+           $.each(fam, function(i, f){
+              $("#sel"+art.ID).append($("<option>").attr("value",f.ID).text(f.Nombre)) ;
+           });
+           
+           $("#sel"+art.ID).val(art.IDSecCom);
+           
+           
+           $("#btn"+art.ID).bind("click", function(){
+                var params = {};
+                params.id = art.ID;
+                params.ids = $("#sel"+art.ID).val();
+                params.Orden = $("#ord"+art.ID).val();
+                params.sec = sec.id;
+                var url = server+"/articulos/editcom";
+              
+                $.post(url, params, function(res){
+                   if(res != ""){
+                     $("#pneArt").empty();
+                     res = $.parseJSON(res);
+                     $.each(res,function(i, art){
+                         lstArt[art.ID] = art; 
+                         AddArticulo(art); 
+                         });
+                    } 
+                });
+           });
+     
+   }
+   
+    
+  
+    
+   $(function(){
+        
+        $.post(server+"/secciones/lsSeccionesCom",function(res){
+          sel = res;  
+        });
+      
+       
+       $.get("/gestion/layout/boton_incluir.html?v=0.4", function(res){
+          btnart = res;        
+       });
+       
+         
+        
+       var buscar = true;
+       $("#txtBus").keyup(function(){
+          var str = $("#txtBus").val();
+               $("#sec").show();
+               $("#add").hide();
+               
+              var params = {str:str};
+             $.post(server+'/comandas/lsnoincluidos',params, function(res){
+               $("#pneArt").empty();
+                 if(res!=""){
+                    res = $.parseJSON(res);
+                     $.each(res, function(i, art){
+                        AddArticulo(art);
+                     });
+                 }
+                 
+             });
+         
+       });
+       
+       $("#sec").bind("click", function(){
+           $("#addModal").modal("hide");
+           window.history.back();
+           CargarSecciones();
+       });
+       
+          
+    });
+</script>

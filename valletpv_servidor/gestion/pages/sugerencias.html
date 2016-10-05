@@ -1,0 +1,187 @@
+<div class="centrado margen">
+   <div class="page-header" style="margin-top: -20px" role="navigation">
+        <div class="text-muted margen pull-left" style="margin-top: 20px">Editar sugerencias</div> 
+        <div class="pull-right" >
+            <button  data-toggle="tooltip" title="Agregar camareros"  style="margin-top: 10px"  type="button" class="btn 
+                btn-default  margen " id="add" >
+                      <span class="glyphicon glyphicon-plus"></span>
+                      
+            </button>
+            <button id="sec" class="btn btn-primary btnAjax" onclick="CargarArticulos();" style="display: none;margin-top: 10px">Atras</button>
+        </div>    
+        <div class="clearfix" ></div>  
+    </div>   
+    
+    
+     <div class="clearfix"></div>
+     <div id="pneArt" >
+         
+    </div>
+     
+     <div id="addModal" class="modal fade">
+        <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+                <div  style="text-align: center; width: 100%;margin-bottom: 10px"><div ><h3 id="titulo"></h3></div></div>
+          
+                <div class="alert alert-info fade"  id="result"></div>   
+             
+            
+                             
+                <div id="pneInfArt" > 
+                  <input type="text" class="form-control" id="nom" placeholder="Nombre de la sugerencia">
+                  <button id="enviar" class="btn btn-primary pull-right btnAjax" >Enviar</button>
+                  <div class="clearfix"></div>
+               </div>
+                       
+               
+          
+       </div>
+             
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+      </div>
+         
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+     
+     
+</div>
+
+<script>
+   
+       
+   var art = {}; 
+   var url = "";
+   var btnart = "";
+   var btnsug = "";
+   var sel = "";
+   var sec = {};
+   
+   function CargarArticulos(){
+        $("#sec").hide();
+        $("#add").hide();
+        $.get(server+"/sugerencias/LsArticulos", function(res){
+        if(res!=""){
+           res = $.parseJSON(res);
+           $("#pneArt").empty();
+           $.each(res,function(i, sec){
+               var div = $("<div>").addClass("col-lg-2 col-md-2 col-xs-6 col-sm-6 ");
+               div.append($("<div>").addClass("margen")
+                       .attr("style","height:100px; width:100%;background: Gray; border: solid 1px;cursor:pointer")
+                       .append("<div style='word-wrap:break-word;margin-top:15px '>"+sec.Nombre+"</div>")
+                       .bind("click", function(){
+                            CargarSugerencias(sec.ID);
+                        })
+                       );
+                   $("#pneArt").append(div);  
+               });
+               
+           }
+        });
+    }
+   
+    function CargarSugerencias(id){
+        $("#sec").show();
+        art.IDArt = id;
+        var params = {id:art.IDArt};
+        $.post(server+"/sugerencias/ls",params, function(res){
+        $("#pneArt").empty();
+         if(res!=""){
+           res = $.parseJSON(res);
+           $.each(res,function(i, art){
+               AddSubTecla(art); 
+              });
+          }
+      });
+   }
+   
+   
+    
+ 
+   
+   function AddSubTecla(sub){
+       var obj = btnsug.replace(/@Nombre/gi, sub.Sugerencia)
+                         .replace(/@id/gi, sub.ID)
+                        .replace(/color_mod/gi, "gray");
+                 $("#pneArt").append(obj); 
+   }
+   
+   
+   
+    function vaciarFrm(){
+     $("#nom").val("");
+     }
+   
+    function cargarFrm(){
+      $("#nom").val(art.Sug);
+    }
+    
+     function editar(id, sug){
+        art.id = id;
+        art.Sug = sug;
+        cargarFrm();
+        $("#titulo").text("Editar subtecla");
+        $("#pneInfCam").show();
+        $("#addModal").modal("show"); 
+     }
+        
+    function borrar(id){
+          art.id = id;
+          $.post(server+"/sugerencias/rm", art, function(res){
+             if(res != ""){
+                $("#pneArt").empty();
+                res = $.parseJSON(res);
+                $.each(res, function(i, sub){
+                   AddSubTecla(sub);
+                });
+               } 
+          }); 
+        }
+    
+   $(function(){
+        
+       
+       
+       $.get("/gestion/layout/boton_sug.html?v=0.2", function(res){
+          btnsug = res;        
+       });
+       
+        
+       $("#sec").bind("click", function(){
+           $("#addModal").modal("hide");
+           CargarArticulos();
+       });
+       
+       $("#enviar").bind("click", function(){
+           art.Sug = $("#nom").val();
+           $.post(server+"/sugerencias/edit", art, function(res){
+              if(res != ""){
+                $("#addModal").modal("hide");
+                $("#pneArt").empty();
+                res = $.parseJSON(res);
+                $.each(res, function(i, sub){
+                   AddSubTecla(sub);
+                });
+               } 
+           });
+       });
+       
+       
+       $("#add").bind("click", function(){
+          art.ID =-1;
+          art.Nombre = "";
+          art.Incremento = '0.00';
+          vaciarFrm();
+          $("#titulo").text("Add subtecla");
+          $("#pneInfArt").show();
+          $("#addModal").modal("show");  
+       });
+        
+        
+    });
+</script>

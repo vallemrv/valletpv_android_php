@@ -1,0 +1,23 @@
+<div data-id="@id"  class="col-xs-12 col-xm-12 col-md-3 col-lg-3" >
+    <div  style="background-color: color_mod; border:solid 1px;" class="margen" >
+        <div class="row margen" style="height: 85%">
+            <h4>@Nombre</h4>
+            <div style="text-align: left;font-size: 80%;padding: 15px"> 
+               <div class="row"><div class="col-xs-8 col-xm-8 col-md-8 col-lg-8">ID Mesa </div><div class="col-xs-4 col-xm-4 col-md-4 col-lg-4 text-right"> @id</div></div>
+               <div class="row"><div class="col-xs-8 col-xm-8 col-md-8 col-lg-8">Orden </div><div class="col-xs-4 col-xm-4 col-md-4 col-lg-4 text-right"> @orden</div></div>
+            </div>
+       </div>
+       <div class="row" style="height:  15%;width: 90%;margin-left: 10px">
+        <div  class="btn-group pull-right margen">
+                <button   data-toggle="tooltip" title="editar articulos"  type="button" class="btn btn-xm
+                         btn-default pull-right "  onclick="mesas.editar(@id)">
+                      <span class="glyphicon glyphicon-edit"></span>
+                </button>
+             <button   data-toggle="tooltip" title="editar articulos"  type="button" class="btn btn-xm
+                         btn-default pull-right "  onclick="mesas.borrar(@id)">
+                      <span class="glyphicon glyphicon-trash"></span>
+                </button>
+           </div>
+      </div>
+</div>
+</div>

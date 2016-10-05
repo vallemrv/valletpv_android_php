@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/pneVarios">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/relativeLayout">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:inputType="numberDecimal"
+            android:ems="20"
+            android:id="@+id/txtPrecio"
+            android:hint="Precio"
+            android:layout_below="@+id/txtCan"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="false"
+            android:gravity="bottom"
+            android:layout_toLeftOf="@+id/btnAceptar"
+            />
+
+        <EditText
+            android:layout_width="50dp"
+            android:layout_height="90dp"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/txtCan"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="1" />
+
+        <EditText
+            android:layout_width="400dp"
+            android:layout_height="90dp"
+            android:id="@+id/txtNombre"
+            android:layout_toRightOf="@+id/txtCan"
+            android:layout_marginLeft="36dp"
+            android:layout_alignTop="@+id/txtCan"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:hint="Varios" />
+
+
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:text="OK"
+            android:id="@+id/btnAceptar"
+            android:layout_toLeftOf="@+id/salirVarios"
+            android:layout_alignTop="@+id/txtPrecio"
+            android:background="@drawable/blancoxml"
+            android:layout_margin="5dp"/>
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/salirVarios"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false"
+            android:layout_alignTop="@+id/txtPrecio"
+            android:background="@drawable/salirxml"
+            android:layout_margin="5dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.vallesoft.valletpv.Mesas"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="5dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/relativeLayout"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Camarero"
+            android:id="@+id/lblTitulo"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp" />
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Abrir\nCajon"
+            android:id="@+id/btnOpenCaja"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="clickAbrirCaja"
+            android:background="@drawable/abrircajonxml"
+            android:layout_margin="5dp" />
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="Lista\nTicket"
+            android:id="@+id/btnListadoTicket"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btnOpenCaja"
+            android:layout_toStartOf="@+id/btnOpenCaja"
+            android:background="@drawable/listaticketxml"
+            android:onClick="clickListaTicket"
+            android:layout_margin="5dp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relativeLayout"
+        android:background="#fffff1ea">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView3"
+            android:layout_weight="0.9"
+            android:background="@android:color/white"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="2dp">
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pneMesas"
+                android:stretchColumns="*"></TableLayout>
+
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView4"
+            android:layout_weight="0.1"
+
+            android:background="@android:color/white"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/pneZonas"></LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</RelativeLayout>
+<!-- From: file:/home/valle/ownCloud/proyectos/android/ValleTPV/app/src/main/res/layout/activity_mesas.xml -->

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#ff64696e">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Mesa"
+            android:id="@+id/btnMesa"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/pneBotones" />
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_alignParentBottom="true"
+      android:id="@+id/pneBotones">
+
+
+      <ImageButton
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:id="@+id/btnCambiarMesa"
+            android:src="@android:drawable/ic_menu_directions"
+            android:layout_weight="1"
+            android:onClick="clickCambiarMesa"
+            android:layout_marginLeft="-5dp" />
+
+
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/btnLsPedidos"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_day"
+            android:onClick="clickMostrarPedidos"
+            android:layout_marginLeft="-5dp" />
+
+       <ImageButton
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:id="@+id/btnCobrar"
+          android:src="@android:drawable/ic_menu_compass"
+          android:layout_weight="1"
+          android:onClick="MostrarListaTicket"
+           android:layout_marginLeft="-5dp" />
+
+  </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

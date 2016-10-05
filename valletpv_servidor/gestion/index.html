@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="description" content="Gestion de tpv, ValleTpv tpv de vallesoft.es">
+        <title>Gestion de tpv.</title>
+        <link rel="shortcut icon" href="http://www.app.elbrasilia.com/favico/favico.ico">
+        <link rel="stylesheet" href="/js/libs/twitter-bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="/js/libs/jquery-upload/css/jquery.fileupload-ui.css">
+        <link rel="stylesheet" href="/js/libs/jquery-upload/css/jquery.fileupload.css">
+        <link rel="stylesheet" href="/css/theme.css">
+        <script src="/js/libs/jquery/jquery.js"></script>
+        <script src="/js/libs/twitter-bootstrap/js/bootstrap.js"></script>
+        <script src="/js/libs/jquery-upload/js/jquery.iframe-transport.js"></script>
+        <script src="/js/libs/jquery-upload/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/js/libs/jquery-upload/js/jquery.fileupload.js"></script>
+        <script src="/js/libs/jscroll/jquery.nicescroll.min.js"></script>
+        <script src="/js/Base64.js"></script>
+        <script src="/js/libs/json3/json3.js"></script>
+        
+ </head>
+  <body>
+    
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="container-fluid">
+                 <!-- Brand and toggle get grouped for better mobile display -->
+                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/gestion">Gestión</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li ><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'camareros'}));">Camareros</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mesas <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'mesas',sub:'zonas'})); ">Zonas</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'mesas',sub:'mesas'}));">Mesas</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teclados <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'articulos',sub:'secciones'}));">Secciones</a></li>
+                          <li><a href="#">Familias</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'articulos',sub:'sec_art'}));">Teclados tpv</a></li>
+                         <li class="divider"></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'comandas',sub:'seccion_com'}));">Teclados comanda</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'comandas',sub:'secciones'}));">Agregar teclas</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'comandas',sub:'sugerencias'}));">Sugerencias</a></li>
+                        </ul>
+                      </li>
+                       <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Historial <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'historial',sub:'mesas_abiertas'}));">Mesas abiertas</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'historial',sub:'nulos'}));">Nulos</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'historial',sub:'informacion'}));">Información mesas</a></li>
+                         </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'ventas',sub:'arqueos'}));">Arqueos</a></li>
+                          <li><a href="#">Resumen trimestral</a></li>
+                          <li><a href="#">Resumen diario</a></li>
+                          <li><a href="#">Parcial</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'ventas',sub:'articulos'}));">V. por articulos</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gastos<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Resumen trimestral</a></li>
+                          <li><a href="#">Resumen diario</a></li>
+                          <li><a href="#">Codificar Gastos</a></li>
+                          <li><a onclick="window.location.href= '#'+Base64.encode(JSON.stringify({op:'gastos',sub:'consulta'}));">Consulta rapida</a></li>
+                        </ul>
+                      </li>
+                      <li ><a href="#">Cambio de precios</a></li>
+                    </ul>
+                    
+                    
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+
+
+      <div id="page" >
+      </div>
+      
+     
+      <div id="popover_content_wrapper" 
+           style="display: none;position: absolute;top:0;left: 0;width: 100%;height: 100%;z-index: 20000;background-color: black;opacity: 0.6">
+          <div><img style="position: absolute; top: 50%; left: 50% " src="/images/loader.gif"/></div>
+      </div>
+
+      <script>
+        
+       var server= "";
+        
+          function copy(obj) {
+            if (null == obj || "object" != typeof obj) return obj;
+            var copy = obj.constructor();
+            for (var attr in obj) {
+                if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+            }
+            return copy;
+          }
+          
+          function getFechaHoy(){
+         today = new Date();
+         dd = today.getDate();
+         mm = today.getMonth()+1; //January is 0!
+         yyyy = today.getFullYear();
+
+            if(dd<10) {
+                dd='0'+dd
+            } 
+
+            if(mm<10) {
+                mm='0'+mm
+            } 
+
+            return dd+'/'+mm+'/'+yyyy;
+        }
+   
+          
+          
+        $(function(){
+         
+          $(window).load(function(){
+                 window.onpopstate();
+              });
+            
+          window.onpopstate = function(){
+                $(".modal-backdrop").hide();
+                comandos =  window.location.href.split("#");
+                if(comandos.length>=2){
+                   var args = $.parseJSON(Base64.decode(comandos[1]));
+                   switch(args.op){
+                    case 'camareros':
+                            $.get('/gestion/pages/camareros.html',function(res){
+                                $("#page").html(res);
+                                if(typeof camareros.CargarCamareros == 'function') camareros.CargarCamareros();
+                            }); 
+                        break;
+                    case 'mesas':
+                        switch(args.sub){ 
+                            case 'zonas':
+                            $.get('/gestion/pages/zonas.html',function(res){
+                                $("#page").html(res);
+                                if(typeof zonas.Cargar == 'function') zonas.Cargar();
+                            }); 
+                            break;
+                            case 'mesas':
+                               $.get('/gestion/pages/mesas.html?v=0.1',function(res){
+                                $("#page").html(res);
+                                if(typeof mesas.Cargar == 'function') mesas.Cargar();
+                            });   
+                            break;
+                         }
+                       break;    
+                    case 'historial':
+                         switch(args.sub){ 
+                            case 'mesas_abiertas':
+                                 $.get('/gestion/pages/mesas_abiertas.html?v=0.4',function(res){
+                                    $("#page").html(res); 
+                                    Cargar();        
+                                 });
+                              break;
+                              case 'informacion':
+                                 $.get('/gestion/pages/informacion_mesas.html?v=0.4',function(res){
+                                    $("#page").html(res); 
+                                    Cargar();        
+                                 });
+                              break;
+                              case 'nulos':
+                                 $.get('/gestion/pages/inf_nulos.html?v=0.4',function(res){
+                                    $("#page").html(res); 
+                                    Cargar();        
+                                 });
+                              break;
+                        }
+                       break; 
+                    case 'comandas':
+                         switch(args.sub){ 
+                            case 'secciones':
+                                 $.get('/gestion/pages/art_com.html?v=0.4',function(res){
+                                    $("#page").html(res); 
+                                    CargarSecciones();        
+                                 });
+                              break;
+                            case 'articulos':
+                                sec = args.sec;
+                                if(typeof CargarArticulos == 'function') CargarArticulos();
+                                else window.location.href= '#'+Base64.encode(JSON.stringify({op:"comandas",sub:"secciones"}));
+                            break;
+                            case 'seccion_com':
+                                 $.get('/gestion/pages/teclas_com.html?v=0.3',function(res){
+                                 $("#page").html(res); 
+                                 CargarSecciones();
+                               });
+                            break;  
+                            case 'teclado':
+                              sec = args.sec;
+                              if(typeof CargarArticulos == 'function') CargarArticulos();
+                              else window.location.href= '#'+Base64.encode(JSON.stringify({op:"comandas",sub:"seccion_com"}));
+                             break;
+                            case 'subteclado':
+                              sec = args.sec;
+                              if(typeof cargarSubTeclas == 'function') cargarSubTeclas();
+                              else window.location.href= '#'+Base64.encode(JSON.stringify({op:"comandas",sub:"teclado"}));
+                            break;
+                            case 'sugerencias':
+                                 $.get('/gestion/pages/sugerencias.html?v=0.3',function(res){
+                                 $("#page").html(res); 
+                                 CargarArticulos();
+                               });
+                            break;  
+                        }
+                       break;
+                    case 'articulos':
+                        switch(args.sub){ 
+                             case "secciones":
+                                 $.get('/gestion/pages/secciones.html?v=0.3',function(res){
+                                 $("#page").html(res); 
+                                 if(typeof sec.Cargar() == 'function') sec.Cargar();
+                               });
+                            break;
+                            case "sec_art":
+                                 $.get('/gestion/pages/articulos.html?v=0.4',function(res){
+                                 $("#page").html(res); 
+                                 if(typeof CargarSecciones == 'function') CargarSecciones();
+                               });
+                            break;
+                            case "articulos":
+                              sec = args.sec;
+                              if(typeof CargarArticulos == 'function') CargarArticulos();
+                              else window.location.href= '#'+Base64.encode(JSON.stringify({op:"articulos",sub:"sec_art"}));         
+                            break;
+                            }
+                       break;
+                    case 'ventas':
+                         switch(args.sub){ 
+                             case "articulos":
+                                 $.get('/gestion/pages/ventas_art.html?v=0.3',function(res){
+                                 $("#page").html(res); 
+                                });
+                             break;
+                             case "arqueos":
+                                 $.get('/gestion/pages/ventas_arq.html?v=0.3',function(res){
+                                 $("#page").html(res); 
+                                });
+                             break;
+                            }
+                      break;
+                      case 'gastos':
+                         switch(args.sub){ 
+                             case "consulta":
+                                 $.get('/gestion/pages/consulta_gastos.html?v=0.3',function(res){
+                                 $("#page").html(res); 
+                                });
+                             break;
+                            }
+                      break;
+                    }
+                    
+                }
+           }
+            
+       
+       
+        
+       /* $('.btnAjax').popover({ 
+            html : true,
+            placement: 'above',
+            trigger : 'manual',
+            content: function() {
+            return $('#popover_content_wrapper').html();
+          }
+         });*/
+                 
+        $(document).ajaxSend(function(event, request, settings) {
+               $('.btnAjax').attr('disabled', 'disabled');
+               $('#popover_content_wrapper').show();
+         });
+
+        $(document).ajaxComplete(function(event, request, settings) {
+                $('.btnAjax').removeAttr('disabled');
+                $('#popover_content_wrapper').hide();
+             });
+             
+        }); 
+        
+    </script>
+        
+    
+  </body>
+</html>
+

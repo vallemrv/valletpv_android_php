@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_buscador.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_buscador.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/teclados.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/teclados.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/item_pedido.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/item_pedido.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_op_mesas.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_op_mesas.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_sugerencias.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_sugerencias.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/mesas.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/mesas.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_mostrar_pedidos.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_mostrar_pedidos.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/linea_pedido_interno.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/linea_pedido_interno.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/linea_art.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/linea_art.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_comanda.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_comanda.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/pedidos.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/pedidos.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/boton_mesa.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/boton_mesa.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/linea_simple.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/linea_simple.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_cuenta.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_cuenta.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_preferencias.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_preferencias.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/lacomanda.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/lacomanda.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/linea_pedido_externo.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/linea_pedido_externo.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/btn_art.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/btn_art.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_camareros.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_camareros.xml"
+    },
+    {
+        "merged": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/layout/activity_mesas.xml",
+        "source": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/layout/activity_mesas.xml"
+    }
+]
