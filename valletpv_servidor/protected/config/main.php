@@ -20,11 +20,11 @@
              ), 
            'db'=>array(
                 'class'=>'CDbConnection',
-                'connectionString' => 'mysql:host=localhost;dbname=brasiliatr',
+                'connectionString' => 'mysql:host=localhost;dbname=base',
                 'emulatePrepare' => true,
                 'enableParamLogging' => true, 
-                'username' => 'brasiliatr',
-                'password' => 'nitrogeno',
+                'username' => 'user',
+                'password' => 'pass',
                 'charset' => 'utf8',
             ),
           'urlManager'=>array(
@@ -47,11 +47,11 @@
            
        ),
        'params' => array(
-                'email'      => 'info@elbrasilia.com',
-                'dirPrint' => '/home/brasiliatr/valletpv/aux/',
+                'email'      => 'ejemplo@ejemplo.com',
+                'dirPrint' => 'dir_para_fichero_impresion',
                 'url' => 'http://192.168.0.101/',
                 'empresa'=>'Brasilia plaza toros',
-                'dbname'=>'brasiliatr'
+                'dbname'=>'base'
           )
        
    );
