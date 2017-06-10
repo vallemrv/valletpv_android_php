@@ -2,18 +2,15 @@ package es.vallesoft.comandas;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -133,9 +130,9 @@ public class OpMesas extends Activity {
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
-
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
                 TableRow.LayoutParams rowparams = new TableRow.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,170);
+                        LinearLayout.LayoutParams.MATCH_PARENT, Math.round(metrics.density * 120));
 
                 rowparams.setMargins(5,5,5,5);
 

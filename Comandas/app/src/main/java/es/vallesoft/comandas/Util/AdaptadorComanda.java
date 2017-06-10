@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import es.vallesoft.comandas.Comanda;
-
 /**
  * Created by valle on 12/09/14.
  */

@@ -1,6 +1,5 @@
 package es.vallesoft.comandas;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -12,14 +11,13 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,7 +35,6 @@ import java.util.List;
 import es.vallesoft.Util.HTTPRequest;
 import es.vallesoft.Util.JSON;
 import es.vallesoft.comandas.IUtil.IPedidos;
-import es.vallesoft.comandas.Util.AdaptadorComanda;
 import es.vallesoft.comandas.Util.AdaptadorMesas;
 import es.vallesoft.comandas.Util.ListaMesas;
 import es.vallesoft.comandas.Util.Pedidos;
@@ -187,9 +184,9 @@ public class Mesas extends FragmentActivity implements View.OnLongClickListener,
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
-
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
                 TableRow.LayoutParams rowparams = new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,220);
+                        TableRow.LayoutParams.MATCH_PARENT, Math.round(metrics.density * 120));
 
                 rowparams.setMargins(5,5,5,5);
 

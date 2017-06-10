@@ -1,0 +1,4 @@
+#Tue May 16 15:52:29 CEST 2017
+base.0=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
+renamed.0=classes.dex
+file.0=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex

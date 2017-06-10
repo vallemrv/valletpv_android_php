@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/res/merged/debug/values/values.xml",
+        "outputFile": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/dimens.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/dimens.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -45,30 +45,11 @@
                     "startLine": 4,
                     "startColumn": 4,
                     "startOffset": 169,
-                    "endColumn": 52,
-                    "endOffset": 217
-                },
-                "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 155,
-                        "endColumn": 52,
-                        "endOffset": 203
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 222,
                     "endColumn": 45,
-                    "endOffset": 263
+                    "endOffset": 210
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -80,20 +61,39 @@
             },
             {
                 "to": {
-                    "startLine": 6,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 268,
-                    "endColumn": 52,
-                    "endOffset": 316
+                    "startOffset": 215,
+                    "endColumn": 68,
+                    "endOffset": 279
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 161,
+                        "endColumn": 68,
+                        "endOffset": 225
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 284,
+                    "endColumn": 58,
+                    "endOffset": 338
+                },
+                "from": {
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
                         "startOffset": 102,
-                        "endColumn": 52,
-                        "endOffset": 150
+                        "endColumn": 58,
+                        "endOffset": 156
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 321,
-                    "endColumn": 68,
-                    "endOffset": 385
+                    "startOffset": 343,
+                    "endColumn": 56,
+                    "endOffset": 395
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 267,
-                        "endColumn": 68,
-                        "endOffset": 331
+                        "startOffset": 299,
+                        "endColumn": 56,
+                        "endOffset": 351
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 390,
-                    "endColumn": 58,
-                    "endOffset": 444
+                    "startOffset": 400,
+                    "endColumn": 75,
+                    "endOffset": 471
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 208,
-                        "endColumn": 58,
-                        "endOffset": 262
+                        "startOffset": 356,
+                        "endColumn": 75,
+                        "endOffset": 427
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 449,
-                    "endColumn": 56,
-                    "endOffset": 501
+                    "startOffset": 476,
+                    "endColumn": 68,
+                    "endOffset": 540
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 405,
-                        "endColumn": 56,
-                        "endOffset": 457
+                        "startOffset": 230,
+                        "endColumn": 68,
+                        "endOffset": 294
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 506,
-                    "endColumn": 75,
-                    "endOffset": 577
+                    "startOffset": 545,
+                    "endColumn": 66,
+                    "endOffset": 607
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 462,
-                        "endColumn": 75,
-                        "endOffset": 533
+                        "startOffset": 432,
+                        "endColumn": 66,
+                        "endOffset": 494
                     }
                 }
             },
@@ -177,51 +177,13 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 582,
-                    "endColumn": 68,
-                    "endOffset": 646
-                },
-                "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 336,
-                        "endColumn": 68,
-                        "endOffset": 400
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 12,
-                    "startColumn": 4,
-                    "startOffset": 651,
-                    "endColumn": 66,
-                    "endOffset": 713
-                },
-                "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 538,
-                        "endColumn": 66,
-                        "endOffset": 600
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 13,
-                    "startColumn": 4,
-                    "startOffset": 718,
-                    "endLine": 15,
+                    "startOffset": 612,
+                    "endLine": 13,
                     "endColumn": 12,
-                    "endOffset": 846
+                    "endOffset": 740
                 },
                 "from": {
-                    "file": "/home/valle/ownCloud/proyectos/android/Comandas/app/src/main/res/values/styles.xml",
+                    "file": "/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/src/main/res/values/styles.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

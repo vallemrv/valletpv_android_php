@@ -150,7 +150,8 @@ public class ServicioCom extends Service {
         IniciarDB();
 
         notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        NotificationCompat.Builder builder;
+        builder = new NotificationCompat.Builder(this);
 
         builder.setSmallIcon(R.drawable.ic_launcher);
         builder.setContentTitle("ValleCom ejecutandose!!");
@@ -179,7 +180,7 @@ public class ServicioCom extends Service {
                     new HTTPRequest(server + "/sync/getupdate", p, "sync", Http);
                 }
             }
-        }, 0, 10000);
+        }, 0, 5000);
 
         timer.schedule(new TimerTask() {
             List<NameValuePair> p = null;
@@ -191,7 +192,7 @@ public class ServicioCom extends Service {
                      new HTTPRequest(server + "/comandas/pedir", p, "pedir", Http);
                 }
             }
-        },0,5000);
+        },0,1000);
     }
 
     @Override

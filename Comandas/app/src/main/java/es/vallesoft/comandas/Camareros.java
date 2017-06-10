@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -38,7 +38,6 @@ public class Camareros extends Activity {
         public void handleMessage(Message msg) {
             String op = msg.getData().getString("op");
             String res = msg.getData().getString("RESPONSE").toString();
-            Log.e("cagada", res);
             try {
 
                 lscam = new JSONArray(res);
@@ -50,10 +49,11 @@ public class Camareros extends Activity {
                     TableLayout.LayoutParams params = new TableLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT );
 
+                    DisplayMetrics metrics = getResources().getDisplayMetrics();
 
                     TableRow.LayoutParams rowparams = new TableRow.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
-                            150);
+                            Math.round(metrics.density * 100));
 
                     rowparams.setMargins(5,5,5,5);
                     TableRow row = new TableRow(cx);

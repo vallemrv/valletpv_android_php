@@ -9,10 +9,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -22,7 +21,6 @@ import android.widget.TextView;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -72,9 +70,10 @@ public class Buscador extends Activity implements TextWatcher{
                 TableLayout.LayoutParams params = new TableLayout.LayoutParams(
                         TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
 
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
 
                 TableRow.LayoutParams rowparams = new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,140);
+                        TableRow.LayoutParams.MATCH_PARENT,Math.round(metrics.density * 120));
 
                 rowparams.setMargins(9, 3, 9, 3);
 

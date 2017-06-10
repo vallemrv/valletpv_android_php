@@ -1,0 +1,10 @@
+#Tue May 16 15:52:29 CEST 2017
+renamed.2=classes.dex
+renamed.1=classes3.dex
+renamed.0=classes2.dex
+base.2=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ce273194654d32451c25c2c99bf71c3f8ab873e1
+base.1=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-22.0.0_a56c6e66a0e806d53e8e28a9be478b163c4d8cd7
+base.0=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.0.0_586a484afd21f49c4ea0b64cb517911eb900f537
+file.2=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ce273194654d32451c25c2c99bf71c3f8ab873e1/classes.dex
+file.1=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-22.0.0_a56c6e66a0e806d53e8e28a9be478b163c4d8cd7/classes.dex
+file.0=/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.0.0_586a484afd21f49c4ea0b64cb517911eb900f537/classes.dex

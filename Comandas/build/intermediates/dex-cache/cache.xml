@@ -2,25 +2,49 @@
 <items version="2" >
 
     <item
-        jar="/home/valle/.opt/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0_46a83ccac3fc95f94f7f0e2e7581487cdf9574b2.jar" />
+        is-multidex="true"
+        jar="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_19ba09824bb4341da08d055358b15db05c0d7b8e/classes.dex" />
     </item>
     <item
-        jar="/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-20.0.0_2ed5323e54980a2a73fbb819903d6b2b12346b17.jar" />
+        is-multidex="true"
+        jar="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7f39b1b8796b53ed89bf16d79676819d2b593f6e">
+        <dex dex="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_7fa9fe22700d3ac20c8fc20edbf2c7a52a1073ef/classes.dex" />
     </item>
     <item
-        jar="/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/jars/libs/internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="/home/valle/ownCloud/proyectos/android/Comandas/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0_8dead9b85f9067ebc8d0b5ec3dbd06c5da7f795e.jar" />
+        is-multidex="true"
+        jar="/Users/valle/.android/build-cache/e3d4dfc5e25a1022c38cdf5a52fe4df258da7efc/output/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-22.0.0_586a484afd21f49c4ea0b64cb517911eb900f537/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/valle/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-22.0.0_a56c6e66a0e806d53e8e28a9be478b163c4d8cd7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/valle/.android/build-cache/e3d4dfc5e25a1022c38cdf5a52fe4df258da7efc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ce273194654d32451c25c2c99bf71c3f8ab873e1/classes.dex" />
     </item>
 
 </items>

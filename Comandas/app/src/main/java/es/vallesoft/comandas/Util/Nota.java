@@ -1,16 +1,12 @@
 package es.vallesoft.comandas.Util;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import es.vallesoft.Util.JSON;
 import es.vallesoft.comandas.IUtil.INota;

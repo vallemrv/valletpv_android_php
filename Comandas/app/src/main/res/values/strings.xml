@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name">Comandas</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_comanda">Comanda</string>
     <string name="title_activity_buscador">Buscar Articulos</string>
     <string name="title_activity_op_mesas">Operar con mesas</string>

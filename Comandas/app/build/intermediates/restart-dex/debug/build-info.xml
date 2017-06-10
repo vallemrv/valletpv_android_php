@@ -1,33 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
-    api-level="23"
-    density="hdpi"
-    format="7"
-    timestamp="20659045749887"
-    token="5304293711511646764" >
+    abi="x86"
+    api-level="22"
+    build-mode="FULL"
+    density="420dpi"
+    format="10"
+    plugin-version="2.3.2"
+    timestamp="1494942712892"
+    token="1627360383256887268"
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="79" />
+        duration="7551" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="26" />
+        duration="838" />
     <task
         name="verifier"
-        duration="2" />
+        duration="108" />
 
     <artifact
-        location="/home/valle/ownCloud/proyectos/android/Comandas/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/outputs/apk/app-debug.apk"
+        type="SPLIT_MAIN" />
 
-    <build timestamp="20659045749887" >
+    <build
+        build-mode="FULL"
+        timestamp="1494942712892"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/home/valle/ownCloud/proyectos/android/Comandas/app/build/outputs/apk/app-debug.apk"
-            type="MAIN" />
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/valle/Pydio/Mis Archivos/proyectos/valletpvdroid/Comandas/app/build/outputs/apk/app-debug.apk"
+            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

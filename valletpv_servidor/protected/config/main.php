@@ -20,11 +20,11 @@
              ), 
            'db'=>array(
                 'class'=>'CDbConnection',
-                'connectionString' => 'mysql:host=localhost;dbname=base',
+                'connectionString' => 'mysql:host=localhost;dbname=brasiliasl',
                 'emulatePrepare' => true,
                 'enableParamLogging' => true, 
-                'username' => 'user',
-                'password' => 'pass',
+                'username' => 'brasiliasl',
+                'password' => 'nitrogeno',
                 'charset' => 'utf8',
             ),
           'urlManager'=>array(
@@ -47,11 +47,11 @@
            
        ),
        'params' => array(
-                'email'      => 'ejemplo@ejemplo.com',
-                'dirPrint' => 'dir_para_fichero_impresion',
-                'url' => 'http://192.168.0.101/',
-                'empresa'=>'Brasilia plaza toros',
-                'dbname'=>'base'
+                'email'      => 'info@elbrasilia.com',
+                'dirPrint' => '/home/brasiliasl/valletpv/aux/',
+                'url' => 'http://192.168.1.249/',
+                'empresa'=>'Brasilia san lazaro',
+                'dbname'=>'elbrasilia'
           )
        
    );
